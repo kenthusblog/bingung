@@ -1,0 +1,21 @@
+div.card-head{
+	border-radius: 2px;
+    text-align: center;
+    padding: 15px 0px; 
+    color: white;
+}
+div.card-head .card-title{
+	font-size:20px;
+}
+div.no-margin{
+	margin-bottom: 0px;
+}
+#head-hb{
+	margin-bottom: 0px;
+}
+#home{
+	margin-bottom: 0px;
+}
+.rft{
+	margin-bottom: 0px;
+}

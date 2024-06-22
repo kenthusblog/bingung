@@ -1,0 +1,122 @@
+table.cal_table{
+	border-collapse: collapse;
+	width:100%;
+	cursor: pointer
+}
+table, th, td {
+	text-align:center !important;
+	color: #000;
+	padding: 7px 5px;
+}
+table.cal_table > tbody > tr > td:hover {
+	background-color: #00758F;
+	cursor: pointer;
+}
+th.day{
+	color: #2196f3;
+}
+div.card-head{
+	border-radius: 2px 2px 0px 0px;
+    text-align: center;
+    padding: 15px 0px; 
+    color: white;
+}
+div.card-head .card-title{
+	font-size:20px;
+}
+div.no-margin{
+	margin-bottom: 0px;
+}
+
+span.det{
+	display:none; 
+}
+p.h-date{
+	font-size:8px;
+	margin: 0px;
+}
+p.m-date{
+	font-size: 180%;
+    font-weight: bold;
+	margin: 0px;
+    cursor: pointer
+}
+#setbulan{
+	text-align: center;
+    font-size: 90%;
+    padding: 15px 0px;
+	border-bottom: 1px solid #FF0000;
+}
+
+	/* The Modal (background) */
+.xmodal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(152, 152, 152, 0.4); /* Black w/ opacity */
+  min-height: 100%;
+}
+
+.list{
+    padding: 5px 10px;
+    background: #efefef;
+    margin-bottom: 5px;
+}
+
+.col-0 .m-date{
+	color: #f44336;
+}
+
+.col-5 .m-date{
+	color: #4caf50;
+}
+
+$colors: (
+  red: #DB2828,
+  orange: #F2711C,
+  yellow: #FBBD08,
+  olive: #B5CC18,
+  green: #21BA45,
+  teal: #00B5AD,
+  blue: #2185D0,
+  violet: #6435C9,
+  purple: #A333C8,
+  pink: #E03997
+);
+
+#output_primwuku img{
+	width:100%;
+}
+#output_primwuku p span{
+	font-weight:bold;
+}
+/* Modal Content/Box */
+.xmodal-content {
+  background-color: #fefefe;
+  margin: 25% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -17px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
