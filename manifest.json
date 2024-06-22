@@ -1,0 +1,22 @@
+{
+    "short_name": "Kalender Jawa lengkap",
+    "name": "Kalender Jawa Lengkap by jurnals",
+	"manifest_version": 2,
+    "description": "Kalender Jawa Online Lengkap, Disertai Wuku Neptu dan lain lain",	
+    "icons": [
+      {
+        "src": "/images/icons-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/icons-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/index.html",
+    "background_color": "#000000",
+    "display": "standalone",
+    "theme_color": "#ff0000"
+  }

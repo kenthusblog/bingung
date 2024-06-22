@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Catatan Kalender Indonesia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style/normalize.min.css">
+    <link rel='stylesheet' href='/style/materialize.min.css'>
+    <link rel='stylesheet' href='/style/animate.min.css'>
+    <link rel='stylesheet' href='/style/font-awesome.min.css'>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+
+<body style='background-size: cover;'>
+    <script src="js/jquery.min.js"></script>
+    <script src='js/materialize.min.js'></script>
+    <script src="js/script.js"></script>
+
+    <div class="row" id="catatan-saya" style='margin-top:10px;'>
+        <div class="col s12">
+            <h5 class='center-align'>Catatan Saya</h5>
+        </div>
+    </div>
+
+    <div class="row" id="ctt-alert" style='display:none'>
+        <div class="col s12">
+            <p class='center-align'>Yaaah! Anda belum memiliki catatan. Untuk menambah catatan atau even, silahkan buka menu Kalender.</p>
+        </div>
+    </div>
+
+    <span id='cttn_page'></span>
+
+    <div style='margin:15px 0px 65px 0px' class='row'>
+        <p class='center-align' id='sc' style="display: none">Made With ❤ jurnals.com</p>
+    </div>
+
+
+    <!-- Modal Lengkapi! -->
+    <div id="lengkapi" class="modal">
+        <div class="modal-content">
+            <p id='a_s'></p>
+        </div>
+    </div>
+
+    <!-- Modal Hapus -->
+    <div id="hapus" class="modal">
+        <div class="modal-content">
+            <p>Hapus catatan tanggal <b><span id='dis_hp_tx'></span></b><span id='hp_tx' style='display:none'></span>?</p>
+        </div>
+        <div class="modal-footer">
+            <div class='row'>
+                <div class='col s6 center-align'>
+                    <a href="#!" class="teal lighten-2 white-text modal-close waves-effect waves-green btn" style="float: none;">Batal</a>
+                </div>
+                <div class='col s6 center-align'>
+                    <a id="del_ctt" class="red white-text modal-close waves-effect waves-red btn" style="float: none;">Hapus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Cattatan -->
+    <div id="det_ctt" class="modal">
+        <div class="modal-content">
+            <p>Catatan <b><span id='ffee'></span></b><span id='ffee-df' style='display:none'></span></p>
+            <div class="divider"></div>
+            <p id='ccrf'></p>
+        </div>
+        <div class="modal-footer">
+            <div class='row'>
+                <div class='col s12 center-align'>
+                    <a onclick='new_ctt_form()' class="blue lighten-2 white-text waves-effect waves-green btn" style="float: none;"><i class="material-icons left">add</i> Catatan Baru</a>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col s6 center-align'>
+                    <a id='ctt_do_del' class="orange lighten-2 white-text modal-close waves-effect waves-green btn" style="float: none;">Hapus</a>
+                </div>
+                <div class='col s6 center-align'>
+                    <a id="det_save_catatan" class="teal white-text modal-close waves-effect waves-green btn" style="float: none;">Perbarui</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Add Note -->
+    <div id="modal_catatan" class="modal">
+        <div class="modal-content">
+            <p>Tambah Catatan</p>
+            <div class="divider"></div>
+            <form>
+                <div class="input-field">
+                    <input id='id_ctt_date' type='date' name='ctt_date' required>
+                </div>
+                <br>
+                <div class="input-field">
+                    <input placeholder="Catatan" id='add_catatan' name='catatan' type="text" class="validate" required>
+                    <label for="catatan">Text</label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class='row'>
+                <div class='col s6 center-align'>
+                    <a href="#!" class="orange lighten-2 white-text modal-close waves-effect waves-green btn" style="float: none;">Batal</a>
+                </div>
+                <div class='col s6 center-align'>
+                    <a id="save_catatan" class="teal white-text modal-close waves-effect waves-green btn" style="float: none;">Simpan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	 <div class="row">
+		 <div class="card z-depth-2">
+               <div class="card-action">
+				   <center>
+					<a href="/index.html" class="xbtncatatan waves-effect waves-light btn red">KALENDER</a>
+				   </center>
+			 </div>
+		 </div>
+	</div>
+	
+	
+    <script>
+        $(document).ready(function() {
+            if ($("#sc").length < 1 | $("#sc").text() !== "Made With ❤ jurnals.com") {
+                $("html").remove();
+                return false;
+            }
+        });
+
+        var bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+
+        function load_ctt() {
+
+            if (localStorage !== null) {
+
+                var qe = Object.keys(localStorage);
+
+                function SortByDate(a, b) {
+                    var aNewDate = new Date(a).getTime();
+                    var bNewDate = new Date(b).getTime();
+                    return ((aNewDate < bNewDate) ? -1 : ((aNewDate > bNewDate) ? 1 : 0));
+                }
+                qe.sort(SortByDate);
+
+                for (var t = 0; t < qe.length; t++) {
+                    var qwe = qe[t].split("-");
+                    var qyear = qwe[0];
+                    var qmonth = Number(qwe[1]) - 1;
+                    var qday = qwe[2];
+
+                    var tgg = qyear + "-" + qwe[1] + "-" + qday;
+
+                    var ctt_ct = localStorage.getItem(qe[t]);
+                    ctt_ct = ctt_ct.replace(';', '; ');
+                    if (ctt_ct.length > 50) ctt_ct = ctt_ct.substring(0, 50) + "...";
+
+                    $("#cttn_page").append("<div class='list_ctt row' onclick='ctt_det(\"" + tgg + "\")'><div class='col s12'><div class='card amber lighten-5 waves-effect waves-light' style='display:block'><div class='card-content'><span class='card-title'>" + qday + " " + bulan[qmonth] + " " + qyear + "</span><p>" + ctt_ct + "</p></div></div></div></div>");
+
+                }
+            }
+            if ($("#cttn_page .list_ctt").length < 1) {
+                $("#ctt-alert").show();
+            }
+
+        }
+
+
+
+        $("#save_catatan").click(function() {
+
+            if ($("#id_ctt_date").val() == "" | $("#add_catatan").val() == "") {
+                $('#a_s').text('Data tidak lengkap..');
+                $('#lengkapi').modal();
+                $('#lengkapi').modal('open');
+            } else {
+                var curr_store = localStorage.getItem($("#id_ctt_date").val());
+
+                if (curr_store) {
+                    localStorage.setItem($("#id_ctt_date").val(), curr_store + $("#add_catatan").val() + ";");
+                } else {
+                    localStorage.setItem($("#id_ctt_date").val(), $("#add_catatan").val() + ";");
+                }
+                $('#a_s').text('Berhasil..');
+                $('#lengkapi').modal();
+                $('#lengkapi').modal('open');
+                setTimeout(function() {
+                    $('#lengkapi').modal('close');
+                }, 2000);
+                generate_table(smonth, tahun_terpilih);
+            }
+
+        });
+
+        $("#det_save_catatan").click(function() {
+            var values = [];
+            $("#ccrf input[name='ctt[]']").each(function() {
+                if ($(this).val()) {
+                    values.push($(this).val());
+                }
+            });
+            var do_data = "";
+            for (var u = 0; u < values.length; u++) {
+                do_data += values[u] + ";";
+            }
+            localStorage.setItem($("#ffee-df").text(), do_data);
+            $('#a_s').text('Berhasil..');
+            $('#lengkapi').modal();
+            $('#lengkapi').modal('open');
+            setTimeout(function() {
+                $('#lengkapi').modal('close');
+            }, 2000);
+            if ($("#kalender").length > 0) {
+                generate_table(smonth, tahun_terpilih);
+            } else if ($("#catatan-saya").length > 0) {
+                document.getElementById('cttn_page').innerHTML = "";
+                load_ctt();
+            }
+
+        });
+
+        function ctt_det(c) {
+            $("#ffee").text("");
+            $("#ffee-df").text("");
+            $("#ccrf").empty();
+            var ddf = c.split("-");
+            var ddy = ddf[0];
+            var ddm = Number(ddf[1]) - 1;
+            var ddd = ddf[2];
+            $("#ffee").text(ddd + " " + bulan[ddm] + " " + ddy);
+            $("#ffee-df").text(ddy + "-" + String(ddm + 1).padStart(2, '0') + "-" + ddd);
+
+            var tgtg = localStorage.getItem(ddy + "-" + ddf[1] + "-" + ddd).split(";");
+            var ogt = "";
+            for (var b = 0; b < (tgtg.length - 1); b++) {
+                ogt += "<input name='ctt[]' type='text' value='" + tgtg[b] + "' class='validate'>";
+            }
+            $("#ccrf").append(ogt);
+            $('#det_ctt').modal();
+            $('#det_ctt').modal('open');
+
+        };
+
+        $("#ctt_do_del").click(function() {
+            $("#hp_tx").text("");
+            $("#dis_hp_tx").text("");
+
+            var ddf = $("#ffee-df").text().split("-");
+            var ddy = ddf[0];
+            var ddm = Number(ddf[1]) - 1;
+            var ddd = ddf[2];
+            $("#hp_tx").text($("#ffee-df").text());
+            $("#dis_hp_tx").text(ddd + " " + bulan[ddm] + " " + ddy);
+
+            $("#ffee").text("");
+            $("#ffee-df").text("");
+            $("#ccrf").empty();
+            $('#hapus').modal();
+            $('#hapus').modal('open');
+        });
+
+        $("#del_ctt").click(function() {
+            localStorage.removeItem($("#hp_tx").text());
+            $('#a_s').text('Catatan berhasil dihapus..');
+            $('#lengkapi').modal();
+            $('#lengkapi').modal('open');
+            setTimeout(function() {
+                $('#lengkapi').modal('close');
+            }, 2000);
+            if ($("#kalender").length > 0) {
+                generate_table(smonth, tahun_terpilih);
+            } else if ($("#catatan-saya").length > 0) {
+                document.getElementById('cttn_page').innerHTML = "";
+                load_ctt();
+            }
+        });
+
+
+        function new_ctt_form() {
+            $("#ccrf").append("<input name='ctt[]' placeholder='Tambah catatan' type='text' class='validate'>");
+        }
+
+        function detail(e) {
+            var c = e.children;
+            var gettext = c[2].textContent;
+            if (gettext !== "") {
+
+                var xres = gettext.slice(0, -1);
+                var arrtext = xres.split(";");
+
+                var adettext = "<p><b>Detail :</b></p>";
+
+                for (var q = 0; q < 6; q++) {
+                    adettext += "<div class='xlist'>" + arrtext[q] + "</div>";
+                }
+                var bdettext = "";
+
+                if (arrtext.length > 6) {
+                    bdettext += "<p><b>Lainnya :</b></p>";
+
+                    for (var v = 6; v < arrtext.length; v++) {
+                        bdettext += "<div class='list'>" + arrtext[v] + "</div>";
+                    }
+                }
+
+                var dettext = adettext + bdettext;
+
+                $("#textmodal").html(dettext);
+
+                var z_ctt_month = arrtext[0].replace('Masehi : ', '');
+                var q_ctt_month = z_ctt_month.split(" ");
+                ctt_month = q_ctt_month[1];
+                var xctt_month;
+                if (ctt_month == "Januari") {
+                    xctt_month = "01";
+                } else if (ctt_month == "Februari") {
+                    xctt_month = "02";
+                } else if (ctt_month == "Maret") {
+                    xctt_month = "03";
+                } else if (ctt_month == "April") {
+                    xctt_month = "04";
+                } else if (ctt_month == "Mei") {
+                    xctt_month = "05";
+                } else if (ctt_month == "Juni") {
+                    xctt_month = "06";
+                } else if (ctt_month == "Juli") {
+                    xctt_month = "07";
+                } else if (ctt_month == "Agustus") {
+                    xctt_month = "08";
+                } else if (ctt_month == "September") {
+                    xctt_month = "09";
+                } else if (ctt_month == "Oktober") {
+                    xctt_month = "10";
+                } else if (ctt_month == "November") {
+                    xctt_month = "11";
+                } else if (ctt_month == "Desember") {
+                    xctt_month = "12";
+                }
+
+                var d_n = String(q_ctt_month[0]).padStart(2, '0');
+
+                var set_ctt_date = q_ctt_month[2] + "-" + xctt_month + "-" + d_n;
+
+                $("#act_mod").html("<a onclick='add_note(\"" + set_ctt_date + "\")' class='btn btn-small waves-effect waves-light teal modal-close'><i class='material-icons left'>add</i>Catatan</a>");
+
+                $("#wctt").hide();
+                $("#myctt").empty();
+                if (localStorage.getItem(set_ctt_date) !== null) {
+                    $("#wctt").show();
+                    var tgtg = localStorage.getItem(set_ctt_date).split(";");
+                    var ogt = "<ul class='collection'>";
+                    for (var b = 0; b < (tgtg.length - 1); b++) {
+                        ogt += "<li class='collection-item amber lighten-5'>" + tgtg[b] + "</li>";
+                    }
+                    ogt += "</ul>";
+                    $("#myctt").append(ogt);
+                }
+
+                var modal = document.getElementById("myModal");
+
+                var span = document.getElementsByClassName("close")[0];
+
+                $('#myModal').modal();
+                $('#myModal').modal('open');
+
+                $("#wuku_hide").html('<span id="tahun_primwuku">' + q_ctt_month[2] + '</span><span id="bulan_primwuku">' + Number(xctt_month) + '</span><span id="tanggal_primwuku">' + Number(d_n) + '</span>');
+
+                go_primwuku();
+
+            }
+        };
+
+        function add_note(z) {
+            var cr_dt = localStorage.getItem(z);
+            if (cr_dt) {
+                ctt_det(z);
+            } else {
+                $('#id_ctt_date').val(z);
+                $('#add_catatan').val("");
+                $('#modal_catatan').modal();
+                $('#modal_catatan').modal('open');
+            }
+        }
+
+        function clear_note() {
+            $('#id_ctt_date').val("");
+            $('#add_catatan').val("");
+        }
+
+        $(document).ready(function() {
+            load_ctt();
+        });
+		
+		var footer = document.createElement('footer');
+  footer.innerHTML = '<div style="padding: 10px; font-size: 15px; text-align: center; background-color: #24bb81; margin-bottom: 5px; display: flex; justify-content: space-between; color: white; font-family: "Lucida Console", "Courier New", monospace;">© 2023 <a href="https://www.jurnals.com">www.jurnals.com</a></div>';
+  document.body.appendChild(footer);
+  document.getElementById('copyright').remove()		
+    </script>
+
+</body></html>
