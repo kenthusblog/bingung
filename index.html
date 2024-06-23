@@ -451,6 +451,12 @@ $( "#go_year" ).click(function() {
 	$("html, body").animate({ scrollTop: 0 }, "slow");
 	}
 });
+
+var footer = document.createElement('footer');
+  footer.innerHTML = '<div style="padding: 10px; text-align: center; margin-bottom: 5px; display: flex; justify-content: space-between;">© 2024 <a href="https://www.panjinawangkung.com">www.panjinawangkung.com</a></div>';
+  document.body.appendChild(footer);
+  document.getElementById('copyright').remove();		
+	
 </script>
 
 <script type="text/javascript">
