@@ -78,3 +78,40 @@ nav {
     background-color: inherit;
     opacity: 1;
 }
+
+.alertinfo {
+	margin-top: 0px;
+    position: relative;
+    padding: 16px 20px 16px 50px;
+    background: #e1f5fe;
+    color: #3c4043;
+    font-size: .85rem;
+    font-family: var(--fontB);
+    line-height: 1.6em;
+    border-radius: 0px;
+    overflow: hidden
+}
+
+.alertinfo::before {
+    content: '';
+    width: 60px;
+    height: 60px;
+    background: #FF0B00;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    opacity: .1
+}
+
+.alertinfo::after {
+    content: '\26A0';
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    font-size: 20px;
+    min-width: 15px;
+    text-align: center;
+	color: red;
+}
