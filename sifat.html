@@ -583,7 +583,15 @@ function rmlk(e){
 		
 		if ( e.bal.value == "Januari" ){
 			var bulan = 0;
-		} else if ( e.bal.value == "Februari" ){
+			 if(e.tga.value>=1 && e.tga.value<21) {
+            document.write("Mongso KAPITU" + '<br>') ;
+        }
+        else if(e.tga.value>=21 && e.tga.value<31) {
+            document.write("Mongso KAPITU" + '<br>');
+        }
+		} 
+		
+		else if ( e.bal.value == "Februari" ){
 			var bulan = 1;
 		} else if ( e.bal.value == "Maret" ){
 			var bulan = 2;
@@ -606,19 +614,6 @@ function rmlk(e){
 		} else if ( e.bal.value == "Desember" ){
 			var bulan = 11;
 		}
-		
-
-        if(e.tga.value>=1 && e.tga.value<21) {
-            document.write("Mongso KAPITU" + '<br>') ;
-        }
-        else if(e.tga.value>=21 && e.tga.value<31) {
-            document.write("Mongso KAPITU" + '<br>');
-        }
-        break;
-    
-
-
-
   
 		var max_date = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 		var no_date = e.tga.value;
@@ -627,9 +622,8 @@ function rmlk(e){
 			max_date = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 		}
 		if (no_date <= max_date[bulan]) {
-			
-			
-			
+	
+				
 			document.getElementById('tggl_lahir_masehi').innerHTML = e.tga.value + " " + e.bal.value + " " + e.tun.value;
 			document.getElementById('pasaran').innerHTML = hrAN + " " + P4Sa;
 			document.getElementById('neptu').innerHTML = Number(neptu[hrAN][P4Sa]);
