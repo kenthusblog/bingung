@@ -57,7 +57,7 @@
                 <div class="card-head red darken-2">
                     <div class="no-margin row">
                         <div class="col s3">
-							<button onclick="prev()" class="btn-floating waves-effect waves-light red darken-5"><i class="material-icons">chevron_left</i></button></div>
+			<button onclick="prev()" class="btn-floating waves-effect waves-light red darken-5"><i class="material-icons">chevron_left</i></button></div>
                         <div class="col s6" style="margin-top: 5px;"><span class="card-title"><span id='month'></span> <span id='year'></span></span></div>
                         <div class="col s3"><button onclick="next()" class="btn-floating waves-effect waves-light red darken-5"><i class="material-icons">chevron_right</i></button>					
 						</div>
@@ -915,8 +915,8 @@ var neptupecah = {
 					
 					var det = document.querySelector(".tbl-hijr .row-"+ row_tbl +" .col-"+ col_tbl + ' .det');
 					
-                                       det.innerHTML = "Tanggal Masehi : "+no_date+" "+bulan[month_now]+" "+year_now+";Tanggal Jawa : "+hijriDate.day+" "+java_months[hijriDate.month - 1]+" "+(Number(hijriDate.year) + 512) + " Ja;"+"Pasaran Jawa : "+res_hari+";Neptu : "+neptu[hari][pasarJava]+";Tahun Jawa : "+tahun_jawa+";Tanggal Hijriyah : "+hijriDate.day+" "+hijri_month[hijriDate.month - 1]+" "+hijriDate.year+" H;";Ini Hanya Contoh Koding "+neptupecah[hari][pasarJava]+";
-					 					 
+             det.innerHTML = "Masehi : "+no_date+" "+bulan[month_now]+" "+year_now+";Tanggal Jawa : "+hijriDate.day+" "+java_months[hijriDate.month - 1]+" "+(Number(hijriDate.year) + 512) + " Ja;"+"Pasaran Jawa : "+res_hari+";Neptu : "+neptu[hari][pasarJava]+";Tahun Jawa : "+tahun_jawa+";Tanggal Hijriyah : "+hijriDate.day+" "+hijri_month[hijriDate.month - 1]+" "+hijriDate.year+" H;";
+					 					 					 
 					var o = new Date();
 					var d_x = o.getDate();
 					var m_x = o.getMonth();
