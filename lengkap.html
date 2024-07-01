@@ -53,100 +53,87 @@
 	</div>
 
 <div class=""><center>
-	<div class="kalender">
+	<div id="kalender">
+		<div>
 			<div class="card">
 				<div class="card-head">
 					 <div class="no-margin">
-						<div class="col-s3">
-							<button onclick="prev()" class="btn-arr"><i class="material-icons">chevron_left</i></button>
-						</div>
-						<div class="col-s6">
-							<span class="card-title"><b><span id='year'></span></b> <span id='month'></span></span>
-						</div>
-						<div class="col-s3">
-							<button onclick="next()" class="btn-arr"><i class="material-icons">chevron_right</i></button>
-						</div>
+						<div class="col-s3"><button onclick="prev()" class="btn-arr"><i class="material-icons">chevron_left</i></button></div>
+						<div class="col-s6"><span class="card-title"><span id='month'></span> <span id='year'></span></span></div>
+						<div class="col-s3"><button onclick="next()" class="btn-arr"><i class="material-icons">chevron_right</i></button></div>
 					</div>
 				</div>
-				<div id="calendar" class="calendar-java">
-<div id='setbulan'></div>
-<table class="cal_table tbl-hijr" border='1'>
-<tbody>
-<tr class="row-days">
-<th class="day" style="color: #f44336;">Akad</th>
-<th class="day">Senen</th>
-<th class="day">Selasa</th>
-<th class="day">Rebo</th>
-<th class="day">Kemis</th>
-<th class="day" style="color: #4caf50;">Jumuah</th>
-<th class="day">Setu</th>
-<th class="wuku">Wuku</th>
-</tr>
-<tr class="row-0">
-<td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-1"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-2"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-3"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-4"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-5"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-6"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td class="col-7"><p class="wk"></p></td>
-</tr>
-<tr class="row-1">
-<td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-1"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-2"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-3"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-4"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-5"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-6"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td class="col-7"><p class="wk"></p></td>
-</tr>
-<tr class="row-2">
-<td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-1"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-2"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-3"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-4"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-5"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-6"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td class="col-7"><p class="wk"></p></td>
-</tr>
-<tr class="row-3">
-<td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-1"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-2"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-3"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-4"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-5"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-6"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td class="col-7"><p class="wk"></p></td>
-</tr>
-<tr class="row-4">
-<td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-1"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-2"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-3"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-4"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-5"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-6"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td class="col-7"><p class="wk"></p></td>
-</tr>
-<tr class="row-5">
-<td onclick="detail(this)" class="col-0"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-1"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-2"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-3"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-4"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-5"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td onclick="detail(this)" class="col-6"><p class="m-date"></p><p class="h-date"></p><span class="det"></span></td>
-<td class="col-7"><p class="wk"></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-					
-				<!-- <div class="card-tabs">
+					<div id="calendar" class="calendar-java">
+						<div id='setbulan'></div>
+						<table class="cal_table tbl-hijr" border='1'>
+						  <tbody>
+							<tr class="row-days">
+								<th class="day" style="color: #f44336;">Min</th>
+								<th class="day">Sen</th>
+								<th class="day">Sel</th>
+								<th class="day">Rab</th>
+								<th class="day">Kam</th> 
+								<th class="day" style="color: #4caf50;">Jum</th>
+								<th class="day">Sab</th>  		
+							</tr>
+							<tr class="row-0">
+								<td onclick='detail(this)' class="col-0"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-1"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-2"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-3"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-4"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-5"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-6"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+							</tr>
+							<tr class="row-1">
+								<td onclick='detail(this)' class="col-0"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-1"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-2"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-3"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-4"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-5"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-6"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+							</tr>
+							<tr class="row-2">
+								<td onclick='detail(this)' class="col-0"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-1"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-2"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-3"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-4"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-5"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-6"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+							</tr>
+							<tr class="row-3">
+								<td onclick='detail(this)' class="col-0"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-1"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-2"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-3"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-4"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-5"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-6"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+							</tr>
+							<tr class="row-4">
+								<td onclick='detail(this)' class="col-0"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-1"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-2"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-3"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-4"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-5"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-6"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+							</tr>
+							<tr class="row-5">
+								<td onclick='detail(this)' class="col-0"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-1"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-2"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-3"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-4"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-5"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+								<td onclick='detail(this)' class="col-6"><p class="m-date"></p><p class="h-date"></p><span class='det'></span></td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>
+				<div class="card-tabs">
 					Hari Libur
 				</div>
 				<div>
@@ -154,10 +141,11 @@
 						<ul class="collection">
 						</ul>
 					</div>
-				</div>-->
+				</div>
 				
 			</div>
-	</div></center>
+		</div>
+	</div>
 	<div id='sc'><a href='https://www.panjinawangkung.com'>kenthus</a></div>
 <!-- Modal Structure -->
 <div id="myModal" class="modal">
