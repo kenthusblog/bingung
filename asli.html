@@ -730,6 +730,11 @@ var HijriJS = {
 </script>
 
 <script type="text/javascript">
+var bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+var namaWuku = ["Sinta", "Landep", "Wukir", "Kurantil", "Tolu", "Gumbreg", "Wariga alit", "Wariagung", "Julangwangi", "Sungsang", "Galungan", "Kuningan", "Langkir", "Mandasiya", "Julung pujut", "Pahang", "Kuru welut", "Marakeh", "Tambir", "Medangkungan", "Maktal", "Wuye", "Manahil", "Prangbakat", "Bala", "Wugu", "Wayang", "Kulawu", "Dukut", "Watu Gunung"];
+
+	
 	
 var neptu = {
 	'Senin': {
@@ -924,6 +929,22 @@ det.innerHTML = "Masehi : "+no_date+" "+bulan[month_now]+" "+year_now+";Tanggal 
 					if ( year_now == y_x && month_now == m_x && no_date == d_x ){
 						$(".tbl-hijr .row-"+ row_tbl +" .col-"+ col_tbl).addClass("blue lighten-5");
 					}
+
+
+$(".tbl-hijr.cal-"+month_now+" .row-"+ row_tbl +" .col-"+ col_tbl).removeClass("blue lighten-5");
+						if ( year_now == y_x && month_now == m_x && no_date == d_x ){
+							$(".tbl-hijr.cal-"+month_now+" .row-"+ row_tbl +" .col-"+ col_tbl).css("background-color", "#bbdefb");
+							$(".to_pasaran").text(res_hari);
+							$(".to_tahun").text(hijriDate.day+" "+java_months[hijriDate.month - 1]+" "+(Number(hijriDate.year) + 512) + " Ja");
+							$(".to_neptu").text(neptu[hari][pasarJava]);
+							$(".to_warsa").text(tahun_jawa);
+							var wk = getPrimbonWuku(year_now, (month_now + 1), no_date);
+							$(".to_wuku").text(namaWuku[wk]);
+						}
+						
+
+
+	
 					
 					$(".tbl-hijr .row-"+ row_tbl +" .col-"+ col_tbl + ' .m-date').css("color","");
 					if ( HariLiburNasional[no_date + " " + bulan[month_now]] ){
